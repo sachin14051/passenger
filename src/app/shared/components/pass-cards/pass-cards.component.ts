@@ -37,7 +37,7 @@ export class PassCardsComponent implements OnInit {
 
 
   onDelete(id:number){
-    this._PassengerService.getSingleUser(id)
+    this._PassengerService.removeUser(id)
   
   }
   

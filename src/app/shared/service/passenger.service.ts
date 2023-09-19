@@ -43,7 +43,7 @@ export class PassengerService {
     return this.passengerArray
   }
 
-  getSingleUser(id:number){
+  removeUser(id:number){
  let single =  +this.passengerArray.findIndex(ele =>{
   return  ele.id ===id 
   })
