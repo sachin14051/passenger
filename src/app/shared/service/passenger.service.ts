@@ -44,7 +44,7 @@ export class PassengerService {
   }
 
   getSingleUser(id:number){
- let single =  +this.passengerArray.filter(ele =>{
+ let single =  +this.passengerArray.findIndex(ele =>{
   return  ele.id ===id 
   })
   this.passengerArray.splice(single,1)
