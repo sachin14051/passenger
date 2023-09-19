@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Ipassenger } from '../../module/module';
 import { PassengerService } from '../../service/passenger.service';
 
@@ -9,17 +9,18 @@ import { PassengerService } from '../../service/passenger.service';
 })
 export class PassCountComponent implements OnInit {
   passName !: Array<Ipassenger>;
-  passCount!:number;
-  passAllcount!:number;
+
+ @Input() passCount!:number;
+  @Input() passAllcount!:number;
 
   constructor(private _PassengerSerive: PassengerService) { }
 
   ngOnInit(): void {
-    this.passName =this._PassengerSerive.getAllPassenger();
-    this.passAllcount =this._PassengerSerive.getAllPassenger().length;
-    this.passCount = this._PassengerSerive.getAllPassenger().filter(ele =>{
-     return  ( ele.checkedIn === true)
-    }).length;
+  this.passName =this._PassengerSerive.getAllPassenger();
+    // this.passAllcount = this._PassengerSerive.getAllPassenger().length;
+    // this.passCount = this._PassengerSerive.getAllPassenger().filter(ele =>{
+    //  return  ( ele.checkedIn === true)
+    // }).length;
 
   }
 

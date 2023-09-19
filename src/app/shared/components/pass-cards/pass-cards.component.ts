@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Ipassenger } from '../../module/module';
 import { PassengerService } from '../../service/passenger.service';
 
@@ -10,7 +10,8 @@ import { PassengerService } from '../../service/passenger.service';
 export class PassCardsComponent implements OnInit {
  @Input() passdata !:Ipassenger;
  isEdit: boolean=false;
- 
+ @Output() emitdata :EventEmitter<number> = new EventEmitter<number>()
+
   constructor(private _PassengerService :PassengerService) { }
 
   ngOnInit(): void {
@@ -37,7 +38,8 @@ export class PassCardsComponent implements OnInit {
 
 
   onDelete(id:number){
-    this._PassengerService.removeUser(id)
+    this._PassengerService.removeUser(id);
+    this.emitdata.emit(id)
   
   }
   

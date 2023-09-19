@@ -1,9 +1,13 @@
+<h2 class="bg-info text-white text-uppercase p-3">passenger list</h2>
 <div class="container">
-    <div class="row">
+    <div class="row" >
+  
         <div class="col-md-6 offset-2">
-            <app-pass-count></app-pass-count>
+            <app-pass-count [passAllcount]="passArray.length"
+            [passCount]="passCount"></app-pass-count>
 
-            <app-pass-cards [passdata]="pass" *ngFor="let pass of passArray"></app-pass-cards>
+            <app-pass-cards [passdata]="pass" *ngFor="let pass of passArray"
+            (emitdata)="getChekdIn()"></app-pass-cards>
         </div>
     </div>
 </div>
