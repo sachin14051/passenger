@@ -1,0 +1,34 @@
+
+<div class="card mb-3">
+    <div class="card-header">
+        <input class="form-control" #fname type="text" [value]="passdata.fullname" [disabled]="!isEdit">
+    </div>
+    <div class="card-body">
+        checkIn date : <strong *ngIf="passdata.checkInDate else para">{{passdata.checkInDate | date}}</strong>
+
+        <ng-template #para>
+            <strong>Not check in</strong>
+        </ng-template>
+
+        <p>children : 
+          
+         <strong>  {{(passdata.children?.length! > 0) ?passdata.children?.length! :  0}}</strong> 
+             
+        </p>
+    </div>
+
+
+
+
+
+    <div class="card-footer d-flex justify-content-between">
+        <button class="btn btn-primary" (click)="onEdit(passdata.id)"
+        *ngIf="!isEdit">edit</button>
+
+
+        <button class="btn btn-primary" 
+        *ngIf="isEdit" (click)="onDone(passdata.id,fname.value)">done</button>
+
+        <button class="btn btn-danger" (click)="onDelete(passdata.id)">delete</button>
+    </div>
+</div>
